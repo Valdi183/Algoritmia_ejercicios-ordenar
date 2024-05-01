@@ -18,7 +18,7 @@ t (una lista de T elementos) que es la que se pretende ordenar con el algoritmo,
 y fin, que es el indice de fin de la porcion de la lista a ordenar (estos mson los datos de entrada del algoritmo). El algoritmo itera sobre 
 los elementos de la lista desde inicio + 1, hastafin. Para cada elemento "a" busca su posicion de insercion utilizando el algoritmo de busqueda 
 dicotomica. Y finalmente Desplaza los elementos mayores que "a" una posicion a la derecha para hacer espacio para a y asi poder  insertar "a" en 
-su lugar. El algoritmo devuelve otra lista nueva con los elementos ya colocados por orden creciente.
+su lugar. El algoritmo devuelve esa misma lista con los elementos ya colocados por orden creciente.
 """
 def orden_dicotomico_1(t: List[T], inicio: int, fin: int) -> None:
     for i in range(inicio + 1, fin + 1):
@@ -40,7 +40,9 @@ def orden_dicotomico_1(t: List[T], inicio: int, fin: int) -> None:
         t[izquierda] = a
 
 """
-Esta funcion toma los mismo parametros que el algoritmo anterior y el algoritmo los recibe como entrada.
+Esta funcion toma los mismo parametros que el algoritmo anterior y el algoritmo los recibe como entrada. Posteriormente crea una copia
+de todos los elementos de la lista para ordenar esa nueva copia. Para ordenarlo los elementos, se utiliza el algoritmo anterior, llamando
+a la función para ejecutarla. el algoritmo devuelve la copia de la lista ordenada
 """
 def orden_dicotomico_2(t: List[T], inicio: int, fin: int) -> List[T]:
     resultado = t[inicio:fin + 1].copy()
@@ -54,6 +56,7 @@ print("Lista original:", t)
 orden_dicotomico_1(t, 0, len(t) - 1)
 print("Lista ordenada en su lugar:", t)
 
-t2 = [4, 2, 7, 1, 9, 5]
+t2 = [44, 223, -73, 2, 40, -103]
+print("Lista original:", t2)
 resultado = orden_dicotomico_2(t2, 0, len(t2) - 1)
 print("Nueva lista ordenada:", resultado)
